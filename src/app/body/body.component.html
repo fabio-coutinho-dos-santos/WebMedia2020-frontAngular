@@ -1,0 +1,81 @@
+<div class="container" align="center">
+
+    <div class="row">
+        <div class="col-sm-4" style="padding: 20px">
+            <div class="cartao" style="width: 16rem;">
+                <div align="center">
+                <img style="width: 20%;" class="card-img-top" src="assets/ionicIcon.png" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Ionic App</h5>
+                <a href="#" (click)="getIonic()" class="btn btn-outline-primary">Obter Localização</a>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="col-sm-4" style="padding: 20px">
+            <div class="cartao" style="width: 16rem;">
+                <div align="center">
+                <img style="width: 20%;" class="card-img-top" src="assets/iconAndroid.png" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Android App</h5>
+                <a href="#" (click)="getAndroid()" class="btn btn-outline-success">Obter Localização</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-4" style="padding: 20px">
+            <div class="cartao" style="width: 16rem;">
+                <div align="center">
+                <img style="width: 20%;" class="card-img-top" src="assets/iconReact.png" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">React Native App</h5>
+                <a href="#" (click)="getReactNative()" class="btn btn-outline-info">Obter Localização</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 30px"> </div>
+    <agm-map *ngIf="lat!=0" [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+        <agm-marker   
+        [latitude]="lat" 
+        [longitude]="lng"
+        [markerClickable]="true"
+        (markerClick)="openModal(templateSalvar)">></agm-marker>
+      </agm-map>
+   
+
+
+</div>
+
+ <ng-template #templateSalvar>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{textoModal}} <br><br>
+        <h6 >{{textoModalSecundario}}</h6> </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div align = "right">
+          <button type="button" 
+            class="btn btn-outline-success"
+            (click)="modalRef.hide()"
+            (click)="oK()">
+            OK!
+          </button>
+        </div>
+    </div>
+</ng-template>
+
+<ngx-spinner
+      bdColor = "rgba(51, 51, 51, 0.8)"
+      size = "large"
+      color = "#fff"
+      type = "ball-spin-clockwise">
+    </ngx-spinner>
